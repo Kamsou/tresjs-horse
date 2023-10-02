@@ -1,35 +1,25 @@
 <script lang="ts" setup>
 import { OrbitControls, GLTFModel } from "@tresjs/cientos";
+
+const gl = reactive({
+  clearColor: "#1C1C1C",
+  powerPreference: "high-performance",
+});
 </script>
 
 <template>
-  <div>
-    <TresCanvas
-      window-size
-      shadows
-      alpha
-      power-preference="high-performance"
-      preserve-drawing-buffer
-    >
-      <TresPerspectiveCamera
-        :position="[1, 4, 7]"
-        :fov="75"
-        :near="0.1"
-        :far="1000"
-      />
-      <OrbitControls />
+  <TresCanvas v-bind="gl" window-size>
+    <TresPerspectiveCamera :position="[0, 1.7, 7]" :look-at="[0, 0, 0]" />
+    <OrbitControls />
+    <Suspense>
       <TresMesh>
         <Suspense>
-          <GLTFModel path="/models/horse.glb" draco ref="modelRef" />
+          <GLTFModel path="/horse.glb" draco ref="modelRef" />
         </Suspense>
       </TresMesh>
-      <TresAxesHelper />
-      <TresDirectionalLight
-        :position="[-4, 8, 4]"
-        :intensity="1.5"
-        cast-shadow
-      />
-      <TresAmbientLight :intensity="5" />
-    </TresCanvas>
-  </div>
+    </Suspense>
+    <TresAxesHelper />
+    <TresDirectionalLight :position="[-4, 8, 4]" :intensity="1.5" cast-shadow />
+    <TresAmbientLight :intensity="5" />
+  </TresCanvas>
 </template>
