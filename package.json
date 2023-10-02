@@ -11,12 +11,14 @@
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
-    "@types/node": "^18.17.3",
-    "nuxt": "3.7.1"
+    "@types/three": "^0.156.0",
+    "nuxt": "^3.7.4",
+    "vue": "^3.3.4",
+    "vue-router": "^4.2.5"
   },
   "dependencies": {
-    "@tresjs/cientos": "^3.3.0",
+    "@tresjs/cientos": "^3.4.1",
     "@tresjs/nuxt": "^1.1.7",
-    "@tresjs/post-processing": "^0.4.0"
+    "three": "^0.157.0"
   }
 }
